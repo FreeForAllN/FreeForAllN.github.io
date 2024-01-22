@@ -2,94 +2,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>watcher?</title>
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font Awesome CDN for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     
-    <style>
-        :root {
-        --primary: #222222;
-        --secondary: #623aad;
-        --secondary2: #4e2d8d;
-        }
-
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-            padding-top: 65px;
-        }
-
-        
-    </style>
-</head>
-
-<body data-spy="scroll" data-target=".navbar" data-offset="50" data-aos-easing="ease-in-out" data-aos-duration="800" data-aos-delay="0">
-
-    <!-- Space-like Background Animation -->
-    <div id="particles-js" class="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="947" height="878"></canvas></div>
-
-    <iframe src="https://player.kick.com/hype" height="720" width="1280" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
-
-
-    <!-- Bootstrap JS and Popper.js CDN -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
-    <script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out'
-        });
-    </script>
-    <script>
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: '#eee' },
-                shape: { type: 'circle', stroke: { width: 0, color: '#000000' }, polygon: { nb_sides: 5 }, image: { src: 'img/github.svg', width: 100, height: 100 } },
-                opacity: { value: 0.5, random: false, anim: { enable: false, speed: 1, opacity_min: 0.1, sync: false } },
-                size: { value: 3, random: true, anim: { enable: false, speed: 40, size_min: 0.1, sync: false } },
-                line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.4, width: 1 },
-                move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
-            },
-            retina_detect: true
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var scrollBtn = document.getElementById("scroll-to-top");
+        <style>
+            :root {
+            --primary: #222222;
+            --secondary: #623aad;
+            --secondary2: #4e2d8d;
+            }
     
-            window.addEventListener("scroll", function () {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    scrollBtn.style.display = "block";
-                } else {
-                    scrollBtn.style.display = "none";
-                }
-            });
+            body {
+                background-color: #1a1a1a;
+                color: #ffffff;
+                font-family: 'Arial', sans-serif;
+                overflow-x: hidden;
+                margin: 0;
+                padding: 0;
+                padding-top: 65px;
+            }
+    
             
+        </style>
+    </head>
     
-            scrollBtn.addEventListener("click", function () {
-                document.body.scrollTop = 0; // For Safari
-                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-            });
-        });
-    </script>
-
-
-
-
-</body></html>
+    <body data-spy="scroll" data-target=".navbar" data-offset="50" data-aos-easing="ease-in-out" data-aos-duration="800" data-aos-delay="0">
+    
+        <iframe src="https://player.kick.com/hype" height="720" width="1280" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+    
+    
+    
+    
+    </body>
+</html>

@@ -1,35 +1,30 @@
-<html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>watcher?</title>
-    
-        <style>
-            :root {
-            --primary: #222222;
-            --secondary: #623aad;
-            --secondary2: #4e2d8d;
-            }
-    
-            body {
-                background-color: #1a1a1a;
-                color: #ffffff;
-                font-family: 'Arial', sans-serif;
-                overflow-x: hidden;
-                margin: 0;
-                padding: 0;
-                padding-top: 65px;
-            }
-    
-            
-        </style>
-    </head>
-    
-    <body data-spy="scroll" data-target=".navbar" data-offset="50" data-aos-easing="ease-in-out" data-aos-duration="800" data-aos-delay="0">
-    
-        <iframe src="https://player.kick.com/hype" height="720" width="1280" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
-    
-    
-    
-    
-    </body>
+    <title>Your GitHub Pages Website</title>
+</head>
+<body>
+
+<div id="video-container"></div>
+
+<script>
+// Replace "https://player.kick.com/hype" with the actual URL
+var videoUrl = "https://player.kick.com/hype";
+
+// Create an iframe element
+var iframe = document.createElement('iframe');
+iframe.src = videoUrl;
+iframe.width = "1280";
+iframe.height = "720";
+iframe.frameborder = "0";
+iframe.scrolling = "no";
+iframe.allowfullscreen = "true";
+
+// Append the iframe to the video-container div
+document.getElementById('video-container').appendChild(iframe);
+</script>
+
+</body>
 </html>

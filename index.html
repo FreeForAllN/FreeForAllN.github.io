@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your GitHub Pages Website</title>
+    <title>Website</title>
 </head>
 <body>
 
-<div id="video-container"></div>
+<iframe id="videoFrame" height="720" width="1280" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
 
 <script>
-// Replace "https://player.kick.com/hype" with the actual URL
-var videoUrl = "https://player.kick.com/hype";
-
-// Create an iframe element
-var iframe = document.createElement('iframe');
-iframe.src = videoUrl;
-iframe.width = "1280";
-iframe.height = "720";
-iframe.frameborder = "0";
-iframe.scrolling = "no";
-iframe.allowfullscreen = "true";
-
-// Append the iframe to the video-container div
-document.getElementById('video-container').appendChild(iframe);
+document.addEventListener("DOMContentLoaded", function() {
+    // Replace "https://player.kick.com/hype" with the actual URL
+    var videoUrl = "https://player.kick.com/hype";
+    
+    // Fetch the content from the external server
+    fetch(videoUrl)
+        .then(response => response.text())
+        .then(data => {
+            // Set the fetched content as the source of the iframe
+            document.getElementById("videoFrame").srcdoc = data;
+        })
+        .catch(error => console.error("Error fetching video content:", error));
+});
 </script>
 
 </body>

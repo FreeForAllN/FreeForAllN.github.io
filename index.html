@@ -3,27 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website</title>
+    <title>Your Website</title>
 </head>
 <body>
 
-<iframe id="videoFrame" height="720" width="1280" frameborder="0" scrolling="no" allowfullscreen="true"></iframe>
+<?php
+// Replace "https://player.kick.com/hype" with the actual URL
+$videoUrl = "https://player.kick.com/hype";
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Replace "https://player.kick.com/hype" with the actual URL
-    var videoUrl = "https://player.kick.com/hype";
-    
-    // Fetch the content from the external server
-    fetch(videoUrl)
-        .then(response => response.text())
-        .then(data => {
-            // Set the fetched content as the source of the iframe
-            document.getElementById("videoFrame").srcdoc = data;
-        })
-        .catch(error => console.error("Error fetching video content:", error));
-});
-</script>
+// Fetch the content from the external server
+$videoContent = file_get_contents($videoUrl);
+
+// Display the fetched content
+echo $videoContent;
+?>
 
 </body>
 </html>

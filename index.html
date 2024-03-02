@@ -1,22 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Website</title>
-</head>
-<body>
+const dns = require('dns');
 
-<?php
-// Replace "https://player.kick.com/hype" with the actual URL
-$videoUrl = "https://player.kick.com/hype";
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
 
-// Fetch the content from the external server
-$videoContent = file_get_contents($videoUrl);
+async function handleRequest(request) {
 
-// Display the fetched content
-echo $videoContent;
-?>
+  const url = new URL(request.url);
+  if (url.pathname.startsWith('/resolve')) {
 
-</body>
-</html>
+    const hostname = url.searchParams.get('name');
+
+    if (!hostname) {
+      return new Response('Missing name parameter', {status: 400});
+    }
+
+    let ip;
+
+    try {
+      const result = await new Promise((resolve, reject) => {
+        dns.resolve4(hostname, (err, addresses) => {
+          if (err) { return reject(err); }
+          resolve(addresses); 
+        });
+      });
+      ip = result[0];
+    } catch (err) {
+      return new Response(err.message, {status: 500});
+    }
+
+    return new Response(ip);
+  
+  } else {
+    
+    return new Response('Use /resolve?name={hostname}');
+  
+  }
+
+}

@@ -1,40 +1,73 @@
-const dns = require('dns');
+<!DOCTYPE html>
+<html>
+<head>
+<title>DNS Resolver</title>  
+</head>
 
-addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
-})
+<body>
 
-async function handleRequest(request) {
+<h1>DNS Lookup</h1>
 
-  const url = new URL(request.url);
-  if (url.pathname.startsWith('/resolve')) {
+<form>
+<label>Domain name:</label>  
+<input type="text" id="domain-name">
+</form>
 
-    const hostname = url.searchParams.get('name');
+<p>
+  DNS Response:
+  <pre id="dns-response"></pre>
+</p>
 
-    if (!hostname) {
-      return new Response('Missing name parameter', {status: 400});
-    }
+<script>
+    addEventListener('fetch', event => {
 
-    let ip;
+        event.respondWith(handleDNSRequest(event.request))
+      
+      })
+      
+      async function handleDNSRequest(request) {
+      
+        const url = new URL(request.url);
+      
+        let hostname = url.searchParams.get('name');
+      
+        // Check body as well 
+        if (!hostname) {
+          const reqBody = await request.text();
+          hostname = new URLSearchParams(reqBody).get('name');
+        }
+      
+        if (!hostname) {
+          return new Response('Missing name parameter', {status: 400})
+        }
+      
+        const dnsResponse = await resolveDNS(hostname); 
+      
+        return new Response(dnsResponse)
+      
+      }
+        
+        async function resolveDNS(hostname) {
 
-    try {
-      const result = await new Promise((resolve, reject) => {
-        dns.resolve4(hostname, (err, addresses) => {
-          if (err) { return reject(err); }
-          resolve(addresses); 
-        });
-      });
-      ip = result[0];
-    } catch (err) {
-      return new Response(err.message, {status: 500});
-    }
+        const url = `https://dns.google/resolve?name=${hostname}&type=A`;  
 
-    return new Response(ip);
-  
-  } else {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        return JSON.stringify(data, null, 2);  
+
+        }
+
+document.getElementById('domain-name')
+  .addEventListener('change', async event => {
     
-    return new Response('Use /resolve?name={hostname}');
-  
-  }
+    const name = event.target.value;
+    const dnsResponse = await resolveDNS(name);
 
-}
+    document.getElementById('dns-response').textContent = dnsResponse;
+
+});
+</script>
+
+</body>
+</html>
